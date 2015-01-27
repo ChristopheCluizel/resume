@@ -99,7 +99,7 @@
     \protected@edef\phonesdetails{\phonesdetails\protect\makenewline\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
   \def\socialsdetails{}%
   \collectionloop{socials}{% the key holds the social type (=symbol command prefix), the item holds the link
-    \protected@edef\socialsdetails{\socialsdetails\protect\makenewline\csname\collectionloopkey socialsymbol\endcsname\collectionloopitem}}%
+    \protected@edef\socialsdetails{\socialsdetails\protect \space \csname\collectionloopkey socialsymbol\endcsname\collectionloopitem}} %\protected@edef\socialsdetails{\socialsdetails\protect\makenewline\csname\collectionloopkey socialsymbol\endcsname\collectionloopitem}}
   \newbox{\makecvtitledetailsbox}%
   \savebox{\makecvtitledetailsbox}{%
     \addressfont\color{color2}%
@@ -110,6 +110,7 @@
       \phonesdetails% needs to be pre-rendered as loops and tabulars seem to conflict
       \ifthenelse{\isundefined{\@email}}{}{\makenewline\emailsymbol\emaillink{\@email}}%
       \ifthenelse{\isundefined{\@homepage}}{}{\makenewline\homepagesymbol\httplink{\@homepage}}%
+      \makenewline %!!!!!!!!!!!!!!!!
       \socialsdetails% needs to be pre-rendered as loops and tabulars seem to conflict
       \ifthenelse{\isundefined{\@extrainfo}}{}{\makenewline\@extrainfo}%
     \end{tabular}
